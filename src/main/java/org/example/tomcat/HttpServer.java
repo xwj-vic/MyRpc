@@ -1,9 +1,6 @@
 package org.example.tomcat;
 
-import org.apache.catalina.Context;
-import org.apache.catalina.Host;
-import org.apache.catalina.Server;
-import org.apache.catalina.Service;
+import org.apache.catalina.*;
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.core.StandardEngine;
@@ -44,6 +41,13 @@ public class HttpServer {
 
         tomcat.addServlet(contextPath, "dispatcher", new DispatcherServlet());
         context.addServletMappingDecoded("/*", "dispatcher");
+
+        try {
+            tomcat.start(); //启动tomcat
+            tomcat.getServer().await();
+        } catch (LifecycleException e) {
+            e.printStackTrace();
+        }
 
     }
 }
