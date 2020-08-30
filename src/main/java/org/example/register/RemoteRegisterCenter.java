@@ -16,6 +16,8 @@ public class RemoteRegisterCenter {
 
     private static Map<String, List<URL>> REGISTER = new HashMap<>();
 
+    private static final String FILE_PATH = "/Volumes/项目/MyRpc/temp.txt";
+
 
     /**
      * 服务注册
@@ -43,7 +45,7 @@ public class RemoteRegisterCenter {
      */
     private static void saveFile() {
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream("/temp.txt");
+            FileOutputStream fileOutputStream = new FileOutputStream(FILE_PATH);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(REGISTER);
         } catch (IOException e) {
@@ -57,7 +59,7 @@ public class RemoteRegisterCenter {
      */
     private static Map<String, List<URL>> getFile() {
         try {
-            FileInputStream fileInputStream = new FileInputStream("/temp.txt");
+            FileInputStream fileInputStream = new FileInputStream(FILE_PATH);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             return (Map<String, List<URL>>) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {

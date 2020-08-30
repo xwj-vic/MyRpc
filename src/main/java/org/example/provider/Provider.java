@@ -14,7 +14,7 @@ public class Provider {
 
     public static void main(String[] args) throws MalformedURLException {
 //        注册服务，暴露接口
-        URL url = new URL("localhost", 8888);
+        URL url = new URL("localhost", 8080);
         RemoteRegisterCenter.regist(HelloService.class.getName(), url);
 
 //        本地注册服务的实现类
