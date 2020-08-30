@@ -2,6 +2,8 @@ package org.example.protocol;
 
 import org.example.bean.Invocation;
 import org.example.bean.URL;
+import org.example.tomcat.HttpClient;
+import org.example.tomcat.HttpServer;
 
 public class MyHttpProtocal implements Protocol {
 
@@ -11,11 +13,13 @@ public class MyHttpProtocal implements Protocol {
      */
     @Override
     public void start(URL url) {
-
+        HttpServer httpServer = new HttpServer();
+        httpServer.start(url.getHostName(), url.getPort());
     }
 
     @Override
     public String send(URL url, Invocation invocation) {
-        return null;
+        HttpClient httpClient = new HttpClient();
+        return httpClient.send(url.getHostName(), url.getPort(), invocation);
     }
 }
