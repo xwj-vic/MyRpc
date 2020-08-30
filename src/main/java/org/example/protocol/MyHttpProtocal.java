@@ -5,6 +5,10 @@ import org.example.bean.URL;
 
 public class MyHttpProtocal implements Protocol {
 
+    /**
+     * 开启服务，用的tomcat
+     * @param url
+     */
     @Override
     public void start(URL url) {
 
