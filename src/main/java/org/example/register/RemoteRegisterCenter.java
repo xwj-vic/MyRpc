@@ -1,14 +1,15 @@
 package org.example.register;
 
+import org.example.bean.URL;
+
 import java.io.*;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * 用map模拟实现一个服务注册中心，并把节点持久化到本地
+ * 用map模拟实现一个服务注册中心，并持久化到本地
  * 额外：dubbo 用的是zookeeper
  */
 public class RemoteRegisterCenter {
