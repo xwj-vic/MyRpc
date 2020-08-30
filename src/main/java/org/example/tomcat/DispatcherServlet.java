@@ -1,7 +1,5 @@
 package org.example.tomcat;
 
-import org.example.proxy.HttpServerHandler;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
