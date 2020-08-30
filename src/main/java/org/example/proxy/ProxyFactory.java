@@ -2,6 +2,7 @@ package org.example.proxy;
 
 import org.example.bean.Invocation;
 import org.example.bean.URL;
+import org.example.loadBalance.LoadBalance;
 import org.example.protocol.Protocol;
 import org.example.register.RemoteRegisterCenter;
 import org.example.util.ProtocolFactory;
@@ -26,7 +27,8 @@ public class ProxyFactory<T> {
                 List<URL> urlList = RemoteRegisterCenter.get(interfaceClass.getName()); //从注册中心获取服务接口数据
 
                 Protocol protocol = ProtocolFactory.getProtocol(); //初始化通信协议
-                String result = protocol.send(urlList.get(0), invocation); //转发到协议层
+                URL url = LoadBalance.random(urlList);
+                String result = protocol.send(url, invocation); //转发到协议层
                 return result;
             }
         });
